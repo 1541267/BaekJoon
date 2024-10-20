@@ -56,8 +56,6 @@ public class groupword {
 
 		int n = Integer.parseInt(br.readLine());
 
-		boolean isGroupWord = true;
-
 		int count = 0;
 
 		for (int i = 0; i < n; i++) {
