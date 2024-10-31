@@ -73,10 +73,37 @@ public class numberSorting {
 //
 // 		Arrays.sort(numbers);
 //
-// 		for (int number : numbers) {
-// 			bw.write(String.valueOf(number));
+// 		for (int closestNumbers : numbers) {
+// 			bw.write(String.valueOf(closestNumbers));
 // 			bw.newLine();
 // 		}
+// 		bw.flush();
+// 		bw.close();
+// 		br.close();
+// 	}
+// }
+
+// Collections.sort 1544ms
+// public class numberSorting {
+// 	public static void main(String[] args) throws Exception {
+// 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+// 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+// 		StringBuilder stb = new StringBuilder();
+// 		int n = Integer.parseInt(br.readLine());
+//
+// 		List<Integer> numbers = new ArrayList<Integer>();
+//
+// 		for(int i = 0; i < n; i++) {
+// 			numbers.add(Integer.parseInt(br.readLine()));
+// 		}
+//
+// 		Collections.sort(numbers);
+//
+// 		for (Integer number : numbers) {
+// 			stb.append(number).append("\n");
+// 		}
+//
+// 		bw.write(String.valueOf(stb));
 // 		bw.flush();
 // 		bw.close();
 // 		br.close();

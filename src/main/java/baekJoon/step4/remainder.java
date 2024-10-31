@@ -91,8 +91,8 @@ public class remainder {
 	// 	int[] remainders = new int[10];
 	//
 	// 	for (int i = 0; i < 10; i++) {
-	// 		int number = Integer.parseInt(br.readLine());
-	// 		int remainder = number % 42;
+	// 		int numbers = Integer.parseInt(br.readLine());
+	// 		int remainder = numbers % 42;
 	//
 	// 		remainders[i] = remainder;
 	// 	}
