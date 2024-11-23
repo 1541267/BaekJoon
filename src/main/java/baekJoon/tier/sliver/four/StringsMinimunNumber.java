@@ -38,6 +38,9 @@ package baekJoon.tier.sliver.four;
 // giorgi igroig
 // 예제 출력 5
 // 6
+// A 문자열을 B에 삽입 했을 떄 문자열의 차이가 적을 수록 추가하는 알파벳의 갯수가 적음
+
+// TODO 코드 원리 좀 더 이해하기
 
 import java.io.BufferedReader;
 import java.io.IOException;
