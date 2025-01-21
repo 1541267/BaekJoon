@@ -52,7 +52,7 @@ package baekJoon.tier.sliver.one;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.util.HashSet;
 
 public class PrefixX {
 	public static void main(String[] args) throws IOException {
@@ -60,13 +60,13 @@ public class PrefixX {
 
 		int n = Integer.parseInt(br.readLine());
 
-		String[] inputArr = new String[n];
+		HashSet<String> inputArr = new HashSet<>();
 
 		for (int i = 0; i < n; i++) {
-			inputArr[i] = br.readLine();
+			inputArr.add(br.readLine());
 		}
 
-		String[] stringArr = Arrays.stream(inputArr).distinct().toArray(String[]::new);
+		String[] stringArr = inputArr.toArray(new String[0]);
 
 		n = stringArr.length;
 
@@ -75,7 +75,7 @@ public class PrefixX {
 		for (int i = 0; i < n; i++) {
 
 			String currentStr = stringArr[i];
-			int prefixXCount = 0;
+			boolean isPrefix = false;
 
 			for (int j = 0; j < n; j++) {
 
@@ -86,11 +86,12 @@ public class PrefixX {
 				}
 
 				if (nextStr.startsWith(currentStr)) {
-					prefixXCount++;
+					isPrefix = true;
 					break;
 				}
 			}
-			if (prefixXCount == 0) {
+
+			if (!isPrefix) {
 				totalCount++;
 			}
 		}
@@ -98,6 +99,51 @@ public class PrefixX {
 	}
 }
 
+// 첫 정답, 스트림 사용
+// public class PrefixX {
+// 	public static void main(String[] args) throws IOException {
+// 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//
+// 		int n = Integer.parseInt(br.readLine());
+//
+// 		String[] inputArr = new String[n];
+//
+// 		for (int i = 0; i < n; i++) {
+// 			inputArr[i] = br.readLine();
+// 		}
+//
+// 		String[] stringArr = Arrays.stream(inputArr).distinct().sorted((Comparator.comparing(String::length))).toArray(String[]::new);
+//
+// 		System.out.println("stringArr = " + Arrays.toString(stringArr));
+// 		n = stringArr.length;
+//
+// 		int totalCount = 0;
+//
+// 		for (int i = 0; i < n; i++) {
+//
+// 			String currentStr = stringArr[i];
+// 			int prefixXCount = 0;
+//
+// 			for (int j = 0; j < n; j++) {
+//
+// 				String nextStr = stringArr[j];
+//
+// 				if (currentStr.equals(nextStr)) {
+// 					continue;
+// 				}
+//
+// 				if (nextStr.startsWith(currentStr)) {
+// 					prefixXCount++;
+// 					break;
+// 				}
+// 			}
+// 			if (prefixXCount == 0) {
+// 				totalCount++;
+// 			}
+// 		}
+// 		System.out.print(totalCount);
+// 	}
+// }
 
 // 처음 시도
 // 엣지 케이스 못잡음 (중복 입력), 그 외에는 되는 듯
