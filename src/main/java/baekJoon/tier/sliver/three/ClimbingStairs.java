@@ -44,48 +44,87 @@ package baekJoon.tier.sliver.three;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
+// 100ms
 public class ClimbingStairs {
-
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		int n = Integer.parseInt(br.readLine());
 
-		int[] stairs = new int[n];
-		// int[] stairs = {10, 20, 15, 25, 10, 20};
-
 		if (n == 0) {
 			System.out.println(0);
-			System.exit(0);
+			return;
 		}
 
+		// int[] stairs = {10, 20, 15, 25, 10, 20};
+		int[] stairs = new int[n];
 		for (int i = 0; i < n; i++) {
 			stairs[i] = Integer.parseInt(br.readLine());
 		}
 
 		// 각 층의 최대 점수
 		int[] dp = new int[n];
-		// int[] dp = new int[6];
-
+		// 첫 계단 밟는 경우
 		dp[0] = stairs[0];
-		if (n >= 2) {
+
+		if (n > 1) {
 			dp[1] = dp[0] + stairs[1];
 		}
 
-		if (n == 1) {
-			System.out.println(dp[0]);
-		} else if (n == 2) {
-			System.out.println(dp[1]);
-		} else {
-			dp[2] = Math.max(stairs[0] + stairs[2], stairs[1] + stairs[2]);
-			for (int i = 3; i < n; i++) {
+		for (int i = 2; i < n; i++) {
+
+			if (i == 2) {
+				dp[i] = Math.max(stairs[0] + stairs[i], stairs[1] + stairs[i]);
+			} else {
 				dp[i] = Math.max(dp[i - 2] + stairs[i], dp[i - 3] + stairs[i - 1] + stairs[i]);
 			}
-			System.out.println("dp = " + Arrays.toString(dp));
-			System.out.println(dp[n - 1]);
 		}
+		System.out.println(dp[n - 1]);
 	}
 }
 
+// 처음에 적은 것
+// public class ClimbingStairs {
+//
+// 	public static void main(String[] args) throws IOException {
+// 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//
+// 		int n = Integer.parseInt(br.readLine());
+//
+// 		int[] stairs = new int[n];
+// 		// int[] stairs = {10, 20, 15, 25, 10, 20};
+//
+// 		if (n == 0) {
+// 			System.out.println(0);
+// 			System.exit(0);
+// 		}
+//
+// 		for (int i = 0; i < n; i++) {
+// 			stairs[i] = Integer.parseInt(br.readLine());
+// 		}
+//
+// 		// 각 층의 최대 점수
+// 		int[] dp = new int[n];
+// 		// int[] dp = new int[6];
+//
+// 		dp[0] = stairs[0];
+// 		if (n >= 2) {
+// 			dp[1] = dp[0] + stairs[1];
+// 		}
+//
+// 		if (n == 1) {
+// 			System.out.println(dp[0]);
+// 		} else if (n == 2) {
+// 			System.out.println(dp[1]);
+// 		} else {
+// 			dp[2] = Math.max(stairs[0] + stairs[2], stairs[1] + stairs[2]);
+// 			for (int i = 3; i < n; i++) {
+// 				dp[i] = Math.max(dp[i - 2] + stairs[i], dp[i - 3] + stairs[i - 1] + stairs[i]);
+// 			}
+// 			System.out.println("dp = " + Arrays.toString(dp));
+// 			System.out.println(dp[n - 1]);
+// 		}
+// 	}
+// }
+//

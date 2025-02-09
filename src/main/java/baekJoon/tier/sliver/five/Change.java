@@ -29,6 +29,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+// 100ms
 public class Change {
 	public static void main(String[] args) throws IOException {
 
@@ -36,29 +37,53 @@ public class Change {
 
 		int n = Integer.parseInt(br.readLine());
 
-		System.out.println(dp(n, 0));
-	}
+		int count = 0;
 
-	private static int dp(int n, int count) {
-
-		System.out.println("n = " + n);
-
-		if ((n == 0 || n == 1 || n == 3) && count == 0) {
-			return -1;
+		while (n > 0) {
+			if (n % 5 == 0) {  // 5원으로 최대한 거슬러 줌
+				count += n / 5;
+				n = 0;
+				break;
+			}
+			n -= 2;  // 5원으로 나눌 수 없으면 2원 사용
+			count++;
 		}
 
-		if (n == 0) {
-			return count;
-		}
-
-		if (n % 5 == 0) {
-			return (n / 5) + count;
-		}
-
-		if ((n - 5) % 2 == 0 && n - 5 > 0) {
-			return dp(n - 5, count + 1);
-		} else {
-			return dp(n - 2, count + 1);
-		}
+		System.out.println(n == 0 ? count : -1);
 	}
 }
+
+// 처음에 적은 것 112ms
+// public class Change {
+// 	public static void main(String[] args) throws IOException {
+//
+// 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//
+// 		int n = Integer.parseInt(br.readLine());
+//
+// 		System.out.println(dp(n, 0));
+// 	}
+//
+// 	private static int dp(int n, int count) {
+//
+// 		System.out.println("n = " + n);
+//
+// 		if ((n == 0 || n == 1 || n == 3) && count == 0) {
+// 			return -1;
+// 		}
+//
+// 		if (n == 0) {
+// 			return count;
+// 		}
+//
+// 		if (n % 5 == 0) {
+// 			return (n / 5) + count;
+// 		}
+//
+// 		if ((n - 5) % 2 == 0 && n - 5 > 0) {
+// 			return dp(n - 5, count + 1);
+// 		} else {
+// 			return dp(n - 2, count + 1);
+// 		}
+// 	}
+// }

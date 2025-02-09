@@ -28,14 +28,18 @@ package baekJoon.tier.bronze.one;
 // 6
 // 10
 
-
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
+// 최적화 -> bufferedwriter, 2차 배열-> 1차배열
 public class BecomThePresidentOfTheWomensAssociation {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringBuilder sb = new StringBuilder();
 
 		int number = Integer.parseInt(br.readLine());
 
@@ -44,22 +48,57 @@ public class BecomThePresidentOfTheWomensAssociation {
 			int k = Integer.parseInt(br.readLine());
 			int n = Integer.parseInt(br.readLine());
 
-			int[][] dp = new int[k + 1][n + 1];
+			int[] dp = new int[n + 1];
 
-			// 0층의 인원 초기화
-			for (int j = 1; j <= n; j++) {
-				dp[0][j] = j;
+			// 0층 초기화
+			for (int room = 1; room <= n; room++) {
+				dp[room] = room;
 			}
 
 			for (int floor = 1; floor <= k; floor++) {
-
-				dp[floor][1] = 1;
-				for (int room = 1; room <= n; room++) {
-					dp[floor][room] = dp[floor - 1][room] + dp[floor][room - 1];
+				for (int room = 2; room <= n; room++) {
+					dp[room] += dp[room - 1];
 				}
 			}
-
-			System.out.println(dp[k][n]);
+			sb.append(dp[n]);
+			if (i != number) {
+				sb.append("\n");
+			}
 		}
+		bw.write(sb.toString());
+		bw.flush();
+		bw.close();
 	}
 }
+
+//  처음에 적은것 112ms
+// public class BecomThePresidentOfTheWomensAssociation {
+// 	public static void main(String[] args) throws IOException {
+// 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//
+// 		int number = Integer.parseInt(br.readLine());
+//
+// 		for (int i = 1; i <= number; i++) {
+//
+// 			int k = Integer.parseInt(br.readLine());
+// 			int n = Integer.parseInt(br.readLine());
+//
+// 			int[][] dp = new int[k + 1][n + 1];
+//
+// 			// 0층의 인원 초기화
+// 			for (int j = 1; j <= n; j++) {
+// 				dp[0][j] = j;
+// 			}
+//
+// 			for (int floor = 1; floor <= k; floor++) {
+//
+// 				dp[floor][1] = 1;
+// 				for (int room = 1; room <= n; room++) {
+// 					dp[floor][room] = dp[floor - 1][room] + dp[floor][room - 1];
+// 				}
+// 			}
+//
+// 			System.out.println(dp[k][n]);
+// 		}
+// 	}
+// }
