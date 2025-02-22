@@ -1,4 +1,4 @@
-package baekJoon.step6;
+package baekJoon.steps.step6;
 
 // 동혁이는 오래된 창고를 뒤지다가 낡은 체스판과 피스를 발견했다.
 //

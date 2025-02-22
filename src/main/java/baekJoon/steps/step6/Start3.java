@@ -1,4 +1,4 @@
-package baekJoon.step6;
+package baekJoon.steps.step6;
 
 // 첫째 줄에 N(1 ≤ N ≤ 100)이 주어진다.
 //

@@ -1,4 +1,4 @@
-package baekJoon.step6;
+package baekJoon.steps.step6;
 
 //          ,r'"7
 // r`-_   ,'  ,/

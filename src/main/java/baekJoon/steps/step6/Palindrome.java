@@ -1,4 +1,4 @@
-package baekJoon.step6;
+package baekJoon.steps.step6;
 // 문제
 // 알파벳 소문자로만 이루어진 단어가 주어진다. 이때, 이 단어가 팰린드롬인지 아닌지 확인하는 프로그램을 작성하시오.
 //
