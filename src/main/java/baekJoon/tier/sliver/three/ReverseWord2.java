@@ -46,6 +46,7 @@ import java.io.InputStreamReader;
 import java.util.Deque;
 import java.util.LinkedList;
 
+// 정리 한것, 차이없음
 public class ReverseWord2 {
 	public static void main(String[] args) throws IOException {
 
