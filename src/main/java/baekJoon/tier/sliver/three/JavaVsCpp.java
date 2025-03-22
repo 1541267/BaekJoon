@@ -1,6 +1,7 @@
 package baekJoon.tier.sliver.three;
 
 // (실버 3) 3613번 : Java Vs C++
+// 구현, 문자열, 많은 조건 문기, 파싱
 // Java 예찬론자 김동규와 C++ 옹호가 김동혁은 서로 어떤 프로그래밍 언어가 최고인지 몇 시간동안 토론을 하곤 했다. 동규는 Java가 명확하고 에러가 적은 프로그램을 만든다고 주장했고, 동혁이는 Java는 프로그램이 느리고, 긴 소스 코드를 갖는 점과 제네릭 배열의 인스턴스화의 무능력을 비웃었다.
 //
 // 또, 김동규와 김동혁은 변수 이름을 짓는 방식도 서로 달랐다. Java에서는 변수의 이름이 여러 단어로 이루어져있을 때, 다음과 같은 방법으로 변수명을 짓는다.
@@ -89,7 +90,7 @@ public class JavaVsCpp {
 		}
 
 		// 첫 글자가 소문자 이외 에러
-		if(!isFirstCharLowerCase) {
+		if (!isFirstCharLowerCase) {
 			isError = true;
 		}
 
@@ -112,7 +113,7 @@ public class JavaVsCpp {
 				}
 
 				// 언더바, 대문자 혼용 체크
-				if(Character.isUpperCase(s.charAt(i))){
+				if (Character.isUpperCase(s.charAt(i))) {
 					isExistUpperCase = true;
 				} else if (s.charAt(i) == '_') {
 					isExistUnderbar = true;
@@ -122,7 +123,6 @@ public class JavaVsCpp {
 					isError = true;
 					break;
 				}
-
 
 				if (isError) {
 					break;
