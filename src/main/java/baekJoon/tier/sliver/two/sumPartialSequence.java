@@ -84,7 +84,8 @@ public class sumPartialSequence {
 	}
 }
 
-// 비트마스킹, 216ms
+// 비트마스킹, 216ms, 1 << n (n개의 원소에 대해 부분집합 표현 가능) (2^n)
+//
 // public class sumPartialSequence {
 // 	public static void main(String[] args) throws IOException {
 // 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
