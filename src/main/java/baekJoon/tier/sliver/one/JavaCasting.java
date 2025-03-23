@@ -63,8 +63,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-public class JavaCasting {
+// Map으로 트리 구성 <String, List<>> -> List: 자식은 여러개 일 수 있기에
+// parentMap으로 키값을 자식으로 -> 해당 자식으로 검사를 할 때 부모를 확인하기 위해
+// -> 부모를 key로 둘 시 여러 자식을 가질 경우 단방향 탐색이 힘듬
+// 찾으려는 class로 parentMap의 결과로 나오는 부모를 모두 set에 저장 -> 해당 class가 가지는 부모
+// 부모 리스트 (set)에 찾으려는 자식을 contains하는지 확인 -> 존재시 부자관계
 
+public class JavaCasting {
 	public static void main(String[] args) throws IOException {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
