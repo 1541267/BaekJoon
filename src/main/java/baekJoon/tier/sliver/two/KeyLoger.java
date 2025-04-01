@@ -28,7 +28,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Stack;
 
+
+// linkedList에 listIterator를 커서로 사용, 740ms
 public class KeyLoger {
 	public static void main(String[] args) throws IOException {
 
@@ -41,33 +45,33 @@ public class KeyLoger {
 			sb.append(read(br)).append("\n");
 		}
 
-		System.out.println(sb);
+		System.out.print(sb.deleteCharAt(sb.length() - 1));
 	}
 
 	private static String read(BufferedReader br) throws IOException {
 
 		LinkedList<Character> linkedList = new LinkedList<>();
+		ListIterator<Character> iterator = linkedList.listIterator();
 
 		int ch = br.read();
 
-		int cursor = 0;
-
 		do {
 			char c = (char)ch;
-
 			if (c == '<') {
-				if (cursor > 0)
-					cursor--;
+				if (iterator.hasPrevious()) {
+					iterator.previous();
+				}
 			} else if (c == '>') {
-				if (cursor < linkedList.size())
-					cursor++;
+				if (iterator.hasNext()) {
+					iterator.next();
+				}
 			} else if (c == '-') {
-				if (cursor > 0) {
-					linkedList.remove((cursor--) - 1);
+				if (iterator.hasPrevious()) {
+					iterator.previous();
+					iterator.remove();
 				}
 			} else {
-				linkedList.add(cursor, c);
-				cursor++;
+				iterator.add(c);
 			}
 		}
 		while ((ch = br.read()) != '\n' && ch != '\r' && ch != -1);
