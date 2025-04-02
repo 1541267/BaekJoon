@@ -1,6 +1,7 @@
 package baekJoon.tier.sliver.two;
 
 // (실버 2) 1847번 스택 수열
+// 자료구조, 스택
 // 시간 제한	메모리 제한	제출	정답	맞힌 사람	정답 비율
 // 2 초	128 MB	182409	73257	50643	38.762%
 // 문제
@@ -56,7 +57,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Stack;
 
-public class NumberSequence {
+public class StackNumberSequence {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
