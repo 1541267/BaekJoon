@@ -45,6 +45,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -52,13 +53,12 @@ import java.util.List;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+// 224ms
 public class DFSAndBFS {
 
 	static List<Integer>[] arr;
 	static boolean[] isVisited;
-	static Deque<Integer> queue;
-	static List<Integer> dfsList = new ArrayList<>();
-	static List<Integer> bfsList = new ArrayList<>();
+	static List<Integer> result = new ArrayList<>();
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -76,10 +76,8 @@ public class DFSAndBFS {
 
 		for (int i = 1; i <= m; i++) {
 			st = new StringTokenizer(br.readLine());
-
 			int first = Integer.parseInt(st.nextToken());
 			int second = Integer.parseInt(st.nextToken());
-
 			arr[first].add(second);
 			arr[second].add(first);
 		}
@@ -90,31 +88,31 @@ public class DFSAndBFS {
 
 		isVisited = new boolean[n + 1];
 		dfs(v);
-
-		isVisited = new boolean[n + 1];
-		bfs(v);
-
-		for (Integer i : dfsList) {
+		for (Integer i : result) {
 			bw.write(i + " ");
 		}
 		bw.newLine();
 
-		for (Integer i : bfsList) {
+		result.clear();
+		Arrays.fill(isVisited, false);
+		bfs(v);
+
+		for (Integer i : result) {
 			bw.write(i + " ");
 		}
 
 		bw.flush();
 		bw.close();
-
+		br.close();
 	}
 
-	private static void dfs(int root) {
-		if (isVisited[root]) return;
+	private static void dfs(int node) {
+		if (isVisited[node]) return;
 
-		isVisited[root] = true;
-		dfsList.add(root);
+		isVisited[node] = true;
+		result.add(node);
 
-		for (int next : arr[root]) {
+		for (int next : arr[node]) {
 			if (!isVisited[next]) {
 				dfs(next);
 			}
@@ -124,14 +122,14 @@ public class DFSAndBFS {
 	private static void bfs(int root) {
 		Queue<Integer> queue = new LinkedList<>();
 		isVisited[root] = true;
-		bfsList.add(root);
+		result.add(root);
 		queue.add(root);
 
 		while (!queue.isEmpty()) {
 			int cur = queue.poll();
 			for (int next : arr[cur]) {
 				if (!isVisited[next]) {
-					bfsList.add(next);
+					result.add(next);
 					isVisited[next] = true;
 					queue.add(next);
 				}
@@ -139,3 +137,92 @@ public class DFSAndBFS {
 		}
 	}
 }
+
+// 214ms
+// public class Main {
+//
+// 	static List<Integer>[] arr;
+// 	static boolean[] isVisited;
+// 	static Deque<Integer> queue;
+// 	static List<Integer> dfsList = new ArrayList<>();
+// 	static List<Integer> bfsList = new ArrayList<>();
+//
+// 	public static void main(String[] args) throws IOException {
+// 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+// 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+// 		StringTokenizer st = new StringTokenizer(br.readLine());
+//
+// 		int n = Integer.parseInt(st.nextToken());
+// 		int m = Integer.parseInt(st.nextToken());
+// 		int v = Integer.parseInt(st.nextToken());
+// 		arr = new ArrayList[n + 1];
+//
+// 		for (int i = 1; i <= n; i++) {
+// 			arr[i] = new ArrayList<>();
+// 		}
+//
+// 		for (int i = 1; i <= m; i++) {
+// 			st = new StringTokenizer(br.readLine());
+//
+// 			int first = Integer.parseInt(st.nextToken());
+// 			int second = Integer.parseInt(st.nextToken());
+//
+// 			arr[first].add(second);
+// 			arr[second].add(first);
+// 		}
+//
+// 		for (int i = 1; i <= n; i++) {
+// 			Collections.sort(arr[i]);
+// 		}
+//
+// 		isVisited = new boolean[n + 1];
+// 		dfs(v);
+//
+// 		isVisited = new boolean[n + 1];
+// 		bfs(v);
+//
+// 		for (Integer i : dfsList) {
+// 			bw.write(i + " ");
+// 		}
+// 		bw.newLine();
+//
+// 		for (Integer i : bfsList) {
+// 			bw.write(i + " ");
+// 		}
+//
+// 		bw.flush();
+// 		bw.close();
+//
+// 	}
+//
+// 	private static void dfs(int root) {
+// 		if (isVisited[root]) return;
+//
+// 		isVisited[root] = true;
+// 		dfsList.add(root);
+//
+// 		for (int next : arr[root]) {
+// 			if (!isVisited[next]) {
+// 				dfs(next);
+// 			}
+// 		}
+// 	}
+//
+// 	private static void bfs(int root) {
+// 		Queue<Integer> queue = new LinkedList<>();
+// 		isVisited[root] = true;
+// 		bfsList.add(root);
+// 		queue.add(root);
+//
+// 		while (!queue.isEmpty()) {
+// 			int cur = queue.poll();
+// 			for (int next : arr[cur]) {
+// 				if (!isVisited[next]) {
+// 					bfsList.add(next);
+// 					isVisited[next] = true;
+// 					queue.add(next);
+// 				}
+// 			}
+// 		}
+// 	}
+// }
