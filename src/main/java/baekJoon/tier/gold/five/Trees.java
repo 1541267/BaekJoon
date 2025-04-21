@@ -30,7 +30,6 @@ package baekJoon.tier.gold.five;
 // 4
 // 예제 출력 4
 // 2
-// TODO DFS 구현 방법 좀 더 이해 하기
 
 import java.io.BufferedReader;
 import java.io.IOException;
