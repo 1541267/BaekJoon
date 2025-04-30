@@ -83,11 +83,13 @@ public class DrinkingBeerWhileWalking {
 
 			isVisited = new boolean[n + 2];
 			// dfs
-			bw.write(dfs(0) ? "happy" : "sad");
+			bw.write("===========DFS==========\n");
+			bw.write(dfs(0) ? "happy\n" : "sad\n");
 
-			// isVisited = new boolean[n + 2];
+			isVisited = new boolean[n + 2];
 			// bfs
-			// bw.write(bfs() ? "happy" : "sad");
+			bw.write("===========BFS==========\n");
+			bw.write(bfs() ? "happy\n" : "sad\n");
 			bw.newLine();
 		}
 		bw.flush();
