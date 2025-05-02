@@ -67,6 +67,12 @@ import java.util.Comparator;
 import java.util.List;
 
 // 824ms
+// 선호도 순으로 내림차순 정렬, 이분탐색으로 도수 레벨의 범위를 잡음
+// (mid = 현재 선택 가능한 최대 도수 수준)
+// 도수 레벨 이하의 맥주를 추가, 선호도 순으로 정렬 되어있음
+// n개의 선호도를 모두 더해 m 이상이면 해당 알코올(mid) 값을 정답 후보 그리고 mid - 1로 다시 탐색
+// 아니면 도수를 높여(mid + 1) 다시 탐색
+
 public class BeerFestival {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
